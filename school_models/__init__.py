@@ -1,20 +1,19 @@
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from .tables import Base, Students, Teachers 
+from .tables import Base
 
-# --- DYNAMIC PATH FIX ---
-# This gets the directory where this __init__.py is (school_models/)
-# then goes up one level to the project root to find/create school.db
+# This code automatically finds the folder you are in
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(BASE_DIR, "school.db")
 
+# Use 4 slashes for absolute Windows paths
 engine = create_engine(f"sqlite:///{DB_PATH}", echo=False)
-# -------------------------
 
-# session factory
+# Session factory
 Session = scoped_session(sessionmaker(bind=engine))
 
+# Ensure tables are created in school.db
 Base.metadata.create_all(bind=engine)
 
 def get_session():

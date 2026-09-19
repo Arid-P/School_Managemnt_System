@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s | %(levelname)s | %(name)s | %(funcName)s | %(message)s",
-    filename="Python +SQL/Projects/School Management System/Logging/management_system.log",      # The file where logs will be saved
+    filename="Python +SQL/Projects/School Management System3/Logging/management_system.log",      # The file where logs will be saved
     filemode="a"             
 )
 
